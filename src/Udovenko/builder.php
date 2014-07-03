@@ -93,7 +93,7 @@ class Builder
     function build()
     {
         // Check cache directory is writable:
-        if (!is_writable(static::$_CACHE_DIRECTORY)) throw new \Exception("Web service doesn't have write permitions on $cacheDirRealPath");
+        if (!is_writable(static::$_CACHE_DIRECTORY)) throw new \Exception("Web service doesn't have write permitions on " . static::$_CACHE_DIRECTORY);
         
         // Choose command template depends on given compiler type:
         switch($this->_compiler)
