@@ -40,7 +40,7 @@ class Builder
      * @throws \Exception
      * @param {Array} $config Initial settings array
      */
-    function __construct($config) 
+    public function __construct($config) 
     {
         static::$_CACHE_DIRECTORY = realpath(__DIR__ . DIRECTORY_SEPARATOR . "cache");
         static::$_JAR_DIRECTORY   = realpath(__DIR__ . DIRECTORY_SEPARATOR . "jar");
@@ -69,7 +69,7 @@ class Builder
      * @param {String} $fileName File name
      * @return {Builder} Current builder instance
      */
-    function addFile($fileName)
+    public function addFile($fileName)
     {
         if (!file_exists($this->_root . $fileName)) throw new \Exception("File " . $this->_root . $fileName . " not exists");
         if (isset($this->_files[$fileName]))        throw new \Exception("File $fileName is already added");
@@ -82,6 +82,25 @@ class Builder
     
     
     /**
+     * Adds array of files to process queue. Uses "addFile" method foreach file
+     * so it have to pass checking for existance in root and cache directories. 
+     * 
+     * @access public
+     * @param {Array} $files Array of files to be added to process queue
+     * @reurn {Builder} Current builder instance
+     */
+    public function addFiles($files)
+    {
+        foreach($files as $file)
+        {
+            $this->addFile($file);
+        }// foreach
+            
+        return $this;
+    }// addFiles
+        
+    
+    /**
      * Determines compiler type from config field and compiles changed files to 
      * cache directory with creating subdirectories from file names if 
      * necessary. If at least one file was recompiled, rewrites history and 
@@ -90,7 +109,7 @@ class Builder
      * @access public
      * @throws \Exception
      */
-    function build()
+    public function build()
     {
         // Check cache directory is writable:
         if (!is_writable(static::$_CACHE_DIRECTORY)) throw new \Exception("Web service doesn't have write permitions on " . static::$_CACHE_DIRECTORY);
