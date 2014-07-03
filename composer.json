@@ -1,0 +1,14 @@
+{
+    "name": "udovenko/js-builder",
+    "autoload": {
+        "psr-0" : {
+            "Udovenko" : "src"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/udovenko/js-builder"
+        }
+    ]
+}
