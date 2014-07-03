@@ -1,5 +1,6 @@
 {
     "name": "udovenko/js-builder",
+    "type": "library",
     "version": "1.1.3",
     "autoload": {
         "psr-0" : {
