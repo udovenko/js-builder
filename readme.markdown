@@ -3,10 +3,8 @@ JavaScript Builder
 
 * Current version: 1.1.3
 
-------------------------
 A simple PHP class you can use to compile multiple JS files into single minified build. Stores minified files in **cache directory** and uses **md5 checksums history** to identify further changes.
 
---------------------------
 Installation with Composer
 --------------------------
 To install Builder class with PHP Composer, first add current GitHub repo into your composer.json file:
@@ -53,7 +51,7 @@ Now it's time to tell which files you want to compile. You can do it one-by-one 
         ->addFile("contrllers/ContentController.js")
         ->addFile("contrllers/NewsController.js")
         ...
-
+    
 Or you can add an array of files:
     
     $builder->addFiles(array(
@@ -71,3 +69,9 @@ You're able to combine both methods together:
         ))
         ->addFile("contrllers/NewsController.js")
         ...
+    
+When all files are in place, you have nothing more to do but call "build" method and wait (probably for a long time is you added 50 files, thou):
+
+    $builder->build();
+    
+When compiling is finished, you should have your new "js/build/classes.js" file in place and updated "classes_build.php" history file in "history" directory of builder package. From now, if you'll update one of your JS classes in JS root, builder will compile only this file, take all others not changed files from cache and rebuild output file enough quickly.
