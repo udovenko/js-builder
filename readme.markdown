@@ -2,8 +2,11 @@ JavaScript Builder
 ==================
 
 * Current version: 1.1.3
+* Requires PHP: 5.3
 
 A simple PHP class you can use to compile multiple JS files into single minified build. Stores minified files in **cache directory** and uses **md5 checksums history** to identify further changes.
+
+> Since Builder uses **.jar** compilers to minify JS code, you need to have Java Runtime Envoronment running on your machine.
 
 Installation with Composer
 --------------------------
@@ -30,12 +33,14 @@ After that don't forget to run update command in your project directory:
     php composer.phar update
 
 Usage
-------    
-If you've installed Builder with Composer, it should automatically be available under "\Udovenko" namespace. To instantiate class you have to pass an array three parameters:
+-----
+    
+If you've installed Builder with Composer, it should automatically be available under "\Udovenko" namespace. To instantiate class you have to pass an array four parameters:
 
 * **name** _- The name of build. Will be also used as history file name._
 * **root** _- The root directory where your created your scripts you now want to compile. Usually it is something like "js/classes"._ 
 * **out** _- The full name for output build file, like "js/build/build.js"._ 
+* **compiler (optional)** _- Type of compiler you want to use. Can be "closure_compiler" (default) or "yui_compressor"._
 
 So new builder can be created this way:
 
