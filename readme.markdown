@@ -6,7 +6,7 @@ JavaScript Builder
 
 A simple PHP class you can use to compile multiple JS files into single minified build. Stores minified files in **cache directory** and uses **md5 checksums history** to identify further changes.
 
-> Since Builder uses **.jar** compilers to minify JS code, you need to have Java Runtime Envoronment running on your machine.
+> Since Builder uses **.jar** compilers to minify JS code, you need to have Java Runtime Environment running on your machine.
 
 Installation with Composer
 --------------------------
